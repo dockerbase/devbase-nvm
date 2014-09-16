@@ -23,7 +23,7 @@ ls_volume:
 
 version:
 	docker run -it --rm $(NAME):$(VERSION) sh -c " lsb_release -d ; git --version ; ruby -v ; ssh -V ; make -v " | tee COMPONENTS
-	#@echo docker run -it --rm $(NAME):$(VERSION) sh -c " . $$(NVM_DIR)/nvm.sh; nvm --version ; node -v; npm -v " | tee -a COMPONENTS
+	docker run -it --rm $(NAME):$(VERSION) sh -c " . /home/devbase/.nvm/nvm.sh; echo -n nvm: ; nvm --version ; echo -n node: ; node -v; echo -n npm: ; npm -v " | tee -a COMPONENTS
 	dos2unix COMPONENTS
 
 tag_latest:
