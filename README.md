@@ -19,3 +19,6 @@ This repository contains **Dockerbase** of [Devbase-nvm](https://github.com/crea
 ### Usage
 
     docker run -it --rm --name dockerbase-devbase-nvm dockerbase/devbase-nvm
+
+### Information
+[Components & Versions](https://github.com/dockerbase/devbase-nvm/blob/master/COMPONENTS)
