@@ -25,6 +25,11 @@ version:
 	docker run -it --rm $(NAME):$(VERSION) sh -c " lsb_release -d ; git --version ; ruby -v ; ssh -V ; make -v " | tee COMPONENTS
 	docker run -it --rm $(NAME):$(VERSION) sh -c " . /home/devbase/.nvm/nvm.sh; echo -n nvm: ; nvm --version ; echo -n node: ; node -v; echo -n npm: ; npm -v ; echo -n brunch: ; brunch --version " | tee -a COMPONENTS
 	dos2unix COMPONENTS
+	sed -i -e 's/^/    /' COMPONENTS
+	sed -i -e '/^### Components & Versions/q' README.md
+	echo >> README.md
+	cat COMPONENTS >> README.md
+	rm COMPONENTS
 
 tag_latest:
 	docker tag $(NAME):$(VERSION) $(NAME):latest
