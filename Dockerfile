@@ -1,4 +1,4 @@
-# VERSION 1.0
+# VERSION 1.1
 # DOCKER-VERSION  1.2.0
 # AUTHOR:         Richard Lee <lifuzu@gmail.com>
 # DESCRIPTION:    Devbase-nvm Image Container
@@ -34,6 +34,9 @@ RUN     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.16.1/insta
 # Install nodejs/npm
 RUN     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install v0.10.31
 RUN     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm alias default 0.10.31
+
+# Install brunch
+RUN     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install -g brunch
 
 # Define default command.
 CMD ["bash"]
