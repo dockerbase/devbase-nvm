@@ -24,7 +24,6 @@ This repository contains **Dockerbase** of [Devbase-nvm](https://github.com/crea
 
     Description:	Ubuntu 14.04.1 LTS
     git version 1.9.1
-    sh: 1: ruby: not found
     OpenSSH_6.6.1p1 Ubuntu-2ubuntu2, OpenSSL 1.0.1f 6 Jan 2014
     GNU Make 3.81
     Copyright (C) 2006  Free Software Foundation, Inc.
@@ -33,7 +32,9 @@ This repository contains **Dockerbase** of [Devbase-nvm](https://github.com/crea
     PARTICULAR PURPOSE.
     
     This program built for x86_64-pc-linux-gnu
-    nvm:0.17.2
-    node:v0.10.32
+    nvm:0.18.0
+    node:v0.10.33
     npm:1.4.28
-    brunch:1.7.17
+    brunch:1.7.18
+    CoffeeScript version 1.8.0
+    foreverv0.13.0

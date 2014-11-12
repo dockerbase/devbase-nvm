@@ -1,5 +1,5 @@
 NAME = dockerbase/devbase-nvm
-VERSION = 1.2
+VERSION = 1.3
 
 .PHONY: all build test tag_latest release ssh enter
 
@@ -12,7 +12,7 @@ test:
 	docker run -it --rm $(NAME):$(VERSION) echo hello world!
 
 run:
-	docker run -it --rm --name dockerbase-devbase-nvm $(NAME):$(VERSION)
+	docker run -it --rm --name $(subst /,-,$(NAME)) $(NAME):$(VERSION)
 
 ls_volume:
 	@ID=$$(docker ps | grep -F "$(NAME):$(VERSION)" | awk '{ print $$1 }') && \
@@ -22,8 +22,8 @@ ls_volume:
 		ls -ls $$DIR
 
 version:
-	docker run -it --rm $(NAME):$(VERSION) sh -c " lsb_release -d ; git --version ; ruby -v ; ssh -V ; make -v " | tee COMPONENTS
-	docker run -it --rm $(NAME):$(VERSION) bash -c " source /home/devbase/.nvm/nvm.sh; echo -n nvm: ; nvm --version ; echo -n node: ; node -v; echo -n npm: ; npm -v ; echo -n brunch: ; brunch --version " | tee -a COMPONENTS
+	docker run -it --rm $(NAME):$(VERSION) sh -c " lsb_release -d ; git --version ; ssh -V ; make -v " | tee COMPONENTS
+	docker run -it --rm $(NAME):$(VERSION) bash -c " source /home/devbase/.nvm/nvm.sh; echo -n nvm: ; nvm --version ; echo -n node: ; node -v; echo -n npm: ; npm -v ; echo -n brunch: ; brunch --version ; coffee --version ; echo -n forever; forever --version " | tee -a COMPONENTS
 	dos2unix COMPONENTS
 	sed -i -e 's/^/    /' COMPONENTS
 	sed -i -e '/^### Components & Versions/q' README.md
